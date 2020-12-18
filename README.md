@@ -1,4 +1,4 @@
-#Inventory Management System
+Inventory Management System
 ------------------------
 This project contains my source files used to create an inventory management system while working as an IT Intern at the Higher Education Development Unit.
 
