@@ -2,11 +2,16 @@ Inventory Management System
 ------------------------
 This project contains my source files used to create an inventory management system while working as an IT Intern at the Higher Education Development Unit.
 
-Featured Pages:
+Featured:
 ----------------
 - Dashboard
 - Login
 - Register
+- View all inventory
+- Search Inventory
+- Add inventory
+- Create loan requests for persons to borrow inventory
+- Ticket requests
 - 404 Error
 - 500 Error
 
