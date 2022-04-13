@@ -5,6 +5,12 @@ This project contains my source files used to create an inventory management sys
 ## Video Demonstration
 A video demonstration of how everything looks can be viewed [here](https://drive.google.com/file/d/0B_E7tBZ1zioFV2VuWHRwZVBTZWs/view?usp=sharing&resourcekey=0-cm-MwExQgAntoNjIh6252Q).
 
+## Getting Started
+- `git clone` this folder
+- Install `Apache XAMPP` using this [link](https://www.apachefriends.org/index.html)
+- Open up XAMPP control panel, and start `Apache` and `MySQL` modules
+- Click the `Admin` button for MySQL to be directed to PhpMyAdmin, where you can import the `.sql` seen inside the repository.
+- Go to `/login`, using username: `admin` and password: `P@ssw0rd` 
 
 Features:
 ----------------
