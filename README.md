@@ -10,7 +10,8 @@ A video demonstration of how everything looks can be viewed [here](https://drive
 - Install `Apache XAMPP` using this [link](https://www.apachefriends.org/index.html)
 - Open up XAMPP control panel, and start `Apache` and `MySQL` modules
 - Click the `Admin` button for MySQL to be directed to PhpMyAdmin, where you can import the `.sql` seen inside the repository.
-- Go to `/login`, using username: `techadmin@hedu.edu.bb` and password: `P@ssw0rd` 
+- Go to `/login`, using username: `techadmin@hedu.edu.bb` and password: `Passw0rd` 
+- You will also need to config your `php.ini` file to allow mailing functions to work. You can verify that mailserver at "localhost", "SMTP" and "smtp_port" is set to 25 in the `php.ini`. Here's a [guide](https://www.quackit.com/php/tutorial/php_mail_configuration.cfm).
 
 Features:
 ----------------
