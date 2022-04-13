@@ -121,14 +121,14 @@
 				
 				//GET TYPE FROM MINI-FROM'
 					
-				$con = mysql_connect("localhost", "root", "");
+				$con = mysqli_connect("localhost", "root", "");
 							
-				$db = mysql_select_db("heduis");
+				$db = mysqli_select_db($con, "heduis");
 							
-				$rs = mysql_query("SELECT * FROM Licence ORDER BY brand");
+				$rs = mysqli_query($con, "SELECT * FROM Licence ORDER BY brand");
 									
 				if(!$con || !$db || !$rs ){
-					die('Error: '.mysql_error());
+					die('Error: '.mysqli_error());
 				}
 				else{
 					echo "
@@ -144,7 +144,7 @@
 							</tr>
 						";	
 						
-					while($row = mysql_fetch_array($rs)){
+					while($row = mysqli_fetch_array($rs)){
 						echo "<tr>";
 							
 						echo "<td>" . $row['id'] . "</td>";
@@ -159,7 +159,7 @@
 					echo "</table>";
 						
 					
-					mysql_close($con);
+					mysqli_close($con);
 				}
 			?>
 			

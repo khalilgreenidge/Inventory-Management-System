@@ -186,24 +186,24 @@ Created: 30/04/2015
 					$type = ucwords(test_input($_POST["type"]));
 					
 					//CONNECT TO DATABASE TO SAVE TYPE AND PIC
-					$con = mysql_connect("localhost", "root", "");
+					$con = mysqli_connect("localhost", "root", "");
 					
-					$db = mysql_select_db("heduis");
+					$db = mysqli_select_db($con, "heduis");
 					
-					$rs = mysql_query("SELECT * FROM new_stationery WHERE type=\"$type\" ");
+					$rs = mysqli_query($con, "SELECT * FROM new_stationery WHERE type=\"$type\" ");
 								
 					
 					if(!$con || !$db || !$rs ){
-						die('Error: '.mysql_error());
+						die('Error: '.mysqli_error());
 					}
 					else{
 						
 						//IF ITEM IS FOUND, PRINT ALREADY ADDED
-						if( mysql_num_rows($rs) > 0 ){
+						if( mysqli_num_rows($rs) > 0 ){
 							echo "<div id=\"ani\" class='error'><img src=\"dist/img/x.png\"/> Item already added! </div>";
 						}
 						else{
-							$rs1 = mysql_query("INSERT INTO new_stationery(type) VALUES(\"$type\")") or die('Error: '.mysql_error());
+							$rs1 = mysqli_query("INSERT INTO new_stationery(type) VALUES(\"$type\")") or die('Error: '.mysqli_error());
 							echo "<div id=\"ani\" class='success'>New item added! <img src=\"dist/img/tick.png\"/></div>";
 						
 							//ADD NEW PIC
@@ -253,7 +253,7 @@ Created: 30/04/2015
 						}	
 						
 					}
-					mysql_close($con);
+					mysqli_close($con);
 				}//END POST
 				
 				function test_input($data){

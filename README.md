@@ -8,8 +8,8 @@ A video demonstration of how everything looks can be viewed [here](https://drive
 ## Getting Started
 - `git clone` this folder
 - Install `Apache XAMPP` using this [link](https://www.apachefriends.org/index.html)
-- Open up XAMPP control panel, and start `Apache` and `MySQL` modules
-- Click the `Admin` button for MySQL to be directed to PhpMyAdmin, where you can import the `.sql` seen inside the repository.
+- Open up XAMPP control panel, and start `Apache` and `mysqli` modules
+- Click the `Admin` button for mysqli to be directed to PhpMyAdmin, where you can import the `.sql` seen inside the repository.
 - Go to `/login`, using username: `admin` and password: `P@ssw0rd` 
 
 Features:
@@ -32,7 +32,7 @@ Technologies:
 - CSS
 - PHP
 - Apache XAMPP
-- MySQL
+- mysqli
 
 Browser Support:
 ----------------

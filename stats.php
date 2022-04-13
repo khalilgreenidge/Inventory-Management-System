@@ -57,18 +57,18 @@
 	</script>
 	
 	<?php
-		$con = mysql_connect("localhost", "root", "");
+		$con = mysqli_connect("localhost", "root", "");
 		
-		$db = mysql_select_db("heduis");
+		$db = mysqli_select_db($con, "heduis");
 				
-		$rs1 = mysql_query("SELECT * FROM stock GROUP BY type ");	
+		$rs1 = mysqli_query($con, "SELECT * FROM stock GROUP BY type ");	
 
 		$type = "";	
 							
 		$stock[] = "['Option', 'Total', { role: 'style' }]";
 							
 		if(!$con || !$db || !$rs1){
-			die('Error: '.mysql_error());
+			die('Error: '.mysqli_error());
 		}
 		else{		
 			
@@ -76,7 +76,7 @@
 			
 			$color = array('#2E2EFE', '#DBA901', '#222d32');
 			
-			while($row = mysql_fetch_array($rs1)){
+			while($row = mysqli_fetch_array($rs1)){
 				
 				//RESET COUNTER IF EQUAL TO 3
 				if($i > 2){
@@ -85,7 +85,7 @@
 				
 				$type = $row["type"];
 				
-				$total = mysql_num_rows(mysql_query("SELECT * FROM stock WHERE type = \"$type\" "));
+				$total = mysqli_num_rows(mysqli_query($con, "SELECT * FROM stock WHERE type = \"$type\" "));
 				
 				/* echo "Type: ".$type."<br/>";
 				echo "Total: ".$total."<br/><br/>";  */

@@ -47,22 +47,22 @@ Created: 37/04/2015
 						}
 						
 						//ESTABLISH CONNECT
-						$con = mysql_connect("localhost", "root", "");
+						$con = mysqli_connect("localhost", "root", "");
 								
 						//CONNECT TO DB
-						$db = mysql_select_db("heduis");
+						$db = mysqli_select_db($con, "heduis");
 								
 						//MAKE QUERY 1
-						$rs1 = mysql_query("SELECT * FROM activation_links WHERE hash='$hash' ");// or die('Error :'.mysql_error());
-						$rs2 = mysql_query("SELECT * FROM password_reset WHERE hash='$hash' "); // or die('Error :'.mysql_error());
+						$rs1 = mysqli_query($con, "SELECT * FROM activation_links WHERE hash='$hash' ");// or die('Error :'.mysqli_error());
+						$rs2 = mysqli_query($con, "SELECT * FROM password_reset WHERE hash='$hash' "); // or die('Error :'.mysqli_error());
 											
 						if(!$con || !$db || !$rs1 || !$rs2){
-							echo "Error: ".mysql_error();
+							echo "Error: ".mysqli_error();
 						}
 						else{
 							//IF LINK IS ACTIVATED OR EXPIRED --> SHOW ERROR. ELSE --> DISPLAY PAGE AND RESET PASSWORD
 							
-							while($row = mysql_fetch_array($rs1)){
+							while($row = mysqli_fetch_array($rs1)){
 								
 								$dbendDate = strtotime($row["endDate"]);
 								//echo "today--".$today."  end date-->".$dbendDate;
@@ -70,14 +70,14 @@ Created: 37/04/2015
 							
 							
 							//DISPLAY USER NAME
-							while($row = mysql_fetch_array($rs2)){
+							while($row = mysqli_fetch_array($rs2)){
 								//ASSIGN VARIABLES TO UPDATE PASSWORD
 								$dbuser = $row["user"];
 															
 							}
 							
-							if($today >= $dbendDate || mysql_num_rows($rs1) < 1 ){
-								$rs = mysql_query("DELETE FROM activation_links WHERE hash='$hash' ") or die('Error: '.mysql_error());
+							if($today >= $dbendDate || mysqli_num_rows($rs1) < 1 ){
+								$rs = mysqli_query("DELETE FROM activation_links WHERE hash='$hash' ") or die('Error: '.mysqli_error());
 								
 								echo "<h2>Link Expired!</h2>";
 								echo "<br/>";
@@ -94,7 +94,7 @@ Created: 37/04/2015
 							}
 														
 						}
-						mysql_close($con);
+						mysqli_close($con);
 					
 					?>
 		  <div class="form-group">

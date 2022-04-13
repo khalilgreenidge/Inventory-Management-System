@@ -113,17 +113,17 @@
 					$num = 0; $number = 0;
 					$highest = 0;
 					
-					$con = mysql_connect("localhost", "root", "");
+					$con = mysqli_connect("localhost", "root", "");
 							
-					$db = mysql_select_db("heduis");
+					$db = mysqli_select_db($con, "heduis");
 									
-					$rs = mysql_query("SELECT id FROM licence");
+					$rs = mysqli_query($con, "SELECT id FROM licence");
 									
 					if(!$con || !$db || !$rs ){
-						die('Error: '.mysql_error());
+						die('Error: '.mysqli_error());
 					}
 					else{
-						while($row = mysql_fetch_array($rs)){
+						while($row = mysqli_fetch_array($rs)){
 							$num = $row['id'];
 							if($num > $highest ){
 								$highest = $num;
@@ -132,7 +132,7 @@
 						$number = $highest +1;
 						echo $number;	
 					}	
-					mysql_close();
+					mysqli_close();
 				
 				?>" readonly /><br/><br/>
                 Brand: <input type="text" name="brand" /><br/><br/>
@@ -179,14 +179,14 @@
 					$endDate = test_input($_POST["endDate"]);
 					
 					//CONNECT TO DB
-					$con = mysql_connect("localhost", "root", "");
+					$con = mysqli_connect("localhost", "root", "");
 					
-					$db = mysql_select_db("heduis");
+					$db = mysqli_select_db($con, "heduis");
 					
-					$rs = mysql_query("INSERT INTO licence VALUES(\"$id\", \"$brand\", \"$version\", \"$key\", \"$type\", \"$startDate\", \"$endDate\") ");
+					$rs = mysqli_query("INSERT INTO licence VALUES(\"$id\", \"$brand\", \"$version\", \"$key\", \"$type\", \"$startDate\", \"$endDate\") ");
 					
 					if(!$con || !$db || !$rs){
-						die('Error: '.mysql_error());
+						die('Error: '.mysqli_error());
 					}
 					else{
 						//PRINT MESSAGE

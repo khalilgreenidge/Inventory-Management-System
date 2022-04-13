@@ -119,14 +119,14 @@ Created: 37/04/2015
 				//VARIABLES
 				$type = "";
 				
-				$con = mysql_connect("localhost", "root", "");
+				$con = mysqli_connect("localhost", "root", "");
 							
-				$db = mysql_select_db("heduis");
+				$db = mysqli_select_db($con, "heduis");
 							
-				$rs = mysql_query("SELECT * FROM loan ");
+				$rs = mysqli_query($con, "SELECT * FROM loan ");
 									
 				if(!$con || !$db || !$rs ){
-					die('Error: '.mysql_error());
+					die('Error: '.mysqli_error());
 				}
 				else{
 					echo "
@@ -145,7 +145,7 @@ Created: 37/04/2015
 							</tr>
 						";	
 						
-					while($row = mysql_fetch_array($rs)){
+					while($row = mysqli_fetch_array($rs)){
 						echo "<tr>";
 							
 						echo "<td>" . $row['ticket_id'] . "</td>";
@@ -201,15 +201,15 @@ Created: 37/04/2015
 							$email = $officer = $duration = "";
 							
 							//PRINT DROP DOWN LIST
-							$result1 = mysql_query("SELECT * FROM loan WHERE status=\"pending\" ") or die(mysql_error());
+							$result1 = mysqli_query($con, "SELECT * FROM loan WHERE status=\"pending\" ") or die(mysqli_error());
 							
-							while($row = mysql_fetch_array($result1)){
+							while($row = mysqli_fetch_array($result1)){
 								echo "<option value = ".$row["ticket_id"].">".$row["ticket_id"]."</option>";
 								$email = $row["Email"];
 								$duration = $row["Duration"];
 								$officer = $row["Officer"];
 							}
-							mysql_close($con);
+							mysqli_close($con);
 						?>
 						</select><br/><br/>
 						Status: <select name="status" required style="width: 140px; position: absolute; left: 25%">
@@ -234,27 +234,27 @@ Created: 37/04/2015
 							
 							$status = $_POST["status"];
 							
-							$con = mysql_connect("localhost", "root", "");
+							$con = mysqli_connect("localhost", "root", "");
 							
-							$db = mysql_select_db("heduis");
+							$db = mysqli_select_db($con, "heduis");
 										
-							$rs = mysql_query("UPDATE loan SET Status=\"$status\" WHERE ticket_id=$ticket ");
-							$rs1 = mysql_query("SELECT * FROM loan WHERE ticket_id = $ticket ");
+							$rs = mysqli_query("UPDATE loan SET Status=\"$status\" WHERE ticket_id=$ticket ");
+							$rs1 = mysqli_query($con, "SELECT * FROM loan WHERE ticket_id = $ticket ");
 								
 							if(!$con || !$db || !$rs || !$rs1){
-								die('Error: '.mysql_error());
+								die('Error: '.mysqli_error());
 								$die = 1;
 							}
 							else{
 							
-								while($row = mysql_fetch_array($rs1)){
+								while($row = mysqli_fetch_array($rs1)){
 									$id = $row["ID"];
 									$officer = $row["Officer"];
 									$email = $row["Email"];
 								}
 							
 								if($status == "accepted"){
-									$rs1 = mysql_query("UPDATE stock SET loaned=\"yes\" WHERE id=\"$id\" ") or die('Error: '.mysql_error());
+									$rs1 = mysqli_query("UPDATE stock SET loaned=\"yes\" WHERE id=\"$id\" ") or die('Error: '.mysqli_error());
 								}	
 								
 								

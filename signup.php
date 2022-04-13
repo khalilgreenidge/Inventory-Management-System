@@ -203,26 +203,26 @@ Created: 37/04/2015
 			
 											
 			//ESTABLISH CONNECT
-			$con = mysql_connect("localhost", "root", "");
+			$con = mysqli_connect("localhost", "root", "");
 					
 			//CONNECT TO DB
-			$db = mysql_select_db("heduis");
+			$db = mysqli_select_db($con, "heduis");
 					
 			//MAKE QUERY 1
-			$rs = mysql_query("SELECT * FROM users WHERE user='$user' ");
+			$rs = mysqli_query($con, "SELECT * FROM users WHERE user='$user' ");
 			
-			$rs1 = mysql_query("SELECT * FROM users WHERE email='$email' ");
+			$rs1 = mysqli_query($con, "SELECT * FROM users WHERE email='$email' ");
 			
-			$rs2 = mysql_query("INSERT INTO activation_links VALUES('$hash', '$startDate', '$endDate')") or die('Error: '.mysql_error());
+			$rs2 = mysqli_query("INSERT INTO activation_links VALUES('$hash', '$startDate', '$endDate')") or die('Error: '.mysqli_error());
 			
-			$rs3 = mysql_query("INSERT INTO registration VALUES('$hash', '$user', '$pwd', '$gender', '$name', '$email' )") or die('Error: '.mysql_error());;
+			$rs3 = mysqli_query("INSERT INTO registration VALUES('$hash', '$user', '$pwd', '$gender', '$name', '$email' )") or die('Error: '.mysqli_error());;
 
 			
 			if(!$con || !$db){
-				echo "Error: ".mysql_error();
+				echo "Error: ".mysqli_error();
 			}
 			
-			if(mysql_num_rows($rs) > 0){
+			if(mysqli_num_rows($rs) > 0){
 				//USERNAME UNAVAILABLE
 				echo '<script>
 						  function checkUser(){	
@@ -238,7 +238,7 @@ Created: 37/04/2015
 					';
 				exit();
 			}
-			if(mysql_num_rows($rs1) > 0){
+			if(mysqli_num_rows($rs1) > 0){
 				echo '<script>
 						  function checkMail(){	
 							var msg = document.getElementById("message");
@@ -389,7 +389,7 @@ Created: 37/04/2015
 						
 				}//END ELSE STATEMENT
 			
-				mysql_close($con);
+				mysqli_close($con);
 		}
 		
 		function test_name($data){

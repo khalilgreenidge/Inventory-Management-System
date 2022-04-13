@@ -150,30 +150,30 @@ Created: 30/04/2015
 							
 				$type = $key;
 				
-				$con = mysql_connect("localhost", "root", "");
+				$con = mysqli_connect("localhost", "root", "");
 						
-				$db = mysql_select_db("heduis");
+				$db = mysqli_select_db($con, "heduis");
 					
-				$rs = mysql_query("SELECT * FROM stock WHERE type='$type' or id='$key'");
-				$rs1 = mysql_query("SELECT * FROM stock WHERE id='$key'");
+				$rs = mysqli_query($con, "SELECT * FROM stock WHERE type='$type' or id='$key'");
+				$rs1 = mysqli_query($con, "SELECT * FROM stock WHERE id='$key'");
 								
 				if(!$con || !$db || !$rs ){
-					die('Error: '.mysql_error());
+					die('Error: '.mysqli_error());
 				}
 				else{
 				
 					
-					while($row = mysql_fetch_array($rs1)){
+					while($row = mysqli_fetch_array($rs1)){
 						$type = $row['type'];
 						echo "<h1>".$type."</h1>";
 					}
 					
 					
-					$num = mysql_num_rows($rs);
+					$num = mysqli_num_rows($rs);
 					
 					$die = 0;
 					
-					if(mysql_num_rows($rs) > 0){
+					if(mysqli_num_rows($rs) > 0){
 						//extract hash
 						$key = $_GET['key'];
 						
@@ -251,7 +251,7 @@ Created: 30/04/2015
 								</tr>
 							";	
 							
-							while($row = mysql_fetch_array($rs)){
+							while($row = mysqli_fetch_array($rs)){
 								echo "<tr>";
 								
 								echo "<td>" . $row['id'] . "</td>";
@@ -268,7 +268,7 @@ Created: 30/04/2015
 							
 						}
 					
-						mysql_close($con);
+						mysqli_close($con);
 					}
 			
 			?>
@@ -338,39 +338,39 @@ Created: 30/04/2015
 					//CHANGE NAME/TYPE
 					if(!empty($name)){	
 						//CONNECT TO DATABASE TO SAVE TYPE AND PIC
-						$con = mysql_connect("localhost", "root", "");
+						$con = mysqli_connect("localhost", "root", "");
 						
-						$db = mysql_select_db("heduis");
+						$db = mysqli_select_db($con, "heduis");
 						
 									
 						
 						if(!$con || !$db ){
-							die('Error: '.mysql_error());
+							die('Error: '.mysqli_error());
 						}
 						else{
 							echo $type. "&nbsp;". $name;
-							$rs = mysql_query("SELECT * FROM new_stationery WHERE type='$type' ") or die("Error: ");
-							$rs2 = mysql_query("SELECT * FROM new_office_equipment WHERE type='$type' ") or die("Error: ");
-							$rs3 = mysql_query("SELECT * FROM new_equipment WHERE type='$type' ") or die("Error: ");
+							$rs = mysqli_query($con, "SELECT * FROM new_stationery WHERE type='$type' ") or die("Error: ");
+							$rs2 = mysqli_query($con, "SELECT * FROM new_office_equipment WHERE type='$type' ") or die("Error: ");
+							$rs3 = mysqli_query($con, "SELECT * FROM new_equipment WHERE type='$type' ") or die("Error: ");
 							
-							if(mysql_num_rows($rs) > 0){
-								$rs = mysql_query("UPDATE new_stationery SET type='$name' WHERE type='$type' ") or die("Error: ");
-								$rs = mysql_query("UPDATE stock SET type='$name' WHERE type='$type' ") or die("Error: ");
+							if(mysqli_num_rows($rs) > 0){
+								$rs = mysqli_query("UPDATE new_stationery SET type='$name' WHERE type='$type' ") or die("Error: ");
+								$rs = mysqli_query("UPDATE stock SET type='$name' WHERE type='$type' ") or die("Error: ");
 							}
 							
-							elseif(mysql_num_rows($rs2) > 0){
-								$rs2 = mysql_query("UPDATE new_office_equipment SET type='$name' WHERE type='$type' ") or die("Error: ");
-								$rs2 = mysql_query("UPDATE stock SET type='$name' WHERE type='$type' ") or die("Error: ");
+							elseif(mysqli_num_rows($rs2) > 0){
+								$rs2 = mysqli_query("UPDATE new_office_equipment SET type='$name' WHERE type='$type' ") or die("Error: ");
+								$rs2 = mysqli_query("UPDATE stock SET type='$name' WHERE type='$type' ") or die("Error: ");
 							}
 							
-							elseif(mysql_num_rows($rs3) > 0){
-								$rs3 = mysql_query("UPDATE new_equipment SET type='$name' WHERE type='$type' ") or die("Error: ");
-								$rs3 = mysql_query("UPDATE stock SET type='$name' WHERE type='$type' ") or die("Error: ");
+							elseif(mysqli_num_rows($rs3) > 0){
+								$rs3 = mysqli_query("UPDATE new_equipment SET type='$name' WHERE type='$type' ") or die("Error: ");
+								$rs3 = mysqli_query("UPDATE stock SET type='$name' WHERE type='$type' ") or die("Error: ");
 							}
 							//ADD TO LINKS FILE FOR LIVESEARCH
 							include 'write.php';
 						}
-						mysql_close($con);
+						mysqli_close($con);
 					}
 					
 					clearstatcache();

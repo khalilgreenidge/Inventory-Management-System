@@ -65,20 +65,20 @@
 			}
 								
 			//ESTABLISH CONNECT
-			$con = mysql_connect("localhost", "root", "");
+			$con = mysqli_connect("localhost", "root", "");
 					
 			//CONNECT TO DB
-			$db = mysql_select_db("heduis");
+			$db = mysqli_select_db($con, "heduis");
 					
 			//MAKE QUERY 1
-			$rs = mysql_query("SELECT * FROM users WHERE user=\"$user\" ");
+			$rs = mysqli_query($con, "SELECT * FROM users WHERE user=\"$user\" ");
 								
-			if(!$con || !$db || !$rs){
-				echo "Error: ".mysql_error();
+			if(!$con || !$rs){
+				echo "Error: ".mysqli_error();
 			}
 			else{
 				//GET DATA USERNAME AND PASSWORD FROM USERS TABLE
-				while($row = mysql_fetch_array($rs)){
+				while($row = mysqli_fetch_array($rs)){
 					$dbuser = $row["user"];
 					$dbpwd = $row["password"];
 					$dbgender = $row["gender"];
@@ -124,7 +124,7 @@
 								
 								msg.style.backgroundColor = "#a94442";
 								
-								msg.innerHTML	= "Incorrect username or password"
+								msg.innerHTML	= "Incorrect username or password."
 							  }	
 							  window.msg();
 						  </script>
@@ -134,7 +134,7 @@
 				
 			}
 			
-			mysql_close($con);
+			mysqli_close($con);
 		}
 	  ?>
 	  
