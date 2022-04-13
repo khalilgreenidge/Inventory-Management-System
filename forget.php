@@ -68,35 +68,35 @@ Created: 37/04/2015
 			//GET USERNAME FROM DATABASE
 			
 			//ESTABLISH CONNECT
-			$con = mysql_connect("localhost", "root", "");
+			$con = mysqli_connect("localhost", "root", "");
 					
 			//CONNECT TO DB
-			$db = mysql_select_db("heduis");
+			$db = mysqli_select_db($con, "heduis");
 					
 			//MAKE QUERY		
-			$rs = mysql_query("SELECT * FROM users WHERE email='$email' ")  or die('Error: '.mysql_error());
+			$rs = mysqli_query($con, "SELECT * FROM users WHERE email='$email' ")  or die('Error: '.mysqli_error());
 			
-			$rs1 = mysql_query("INSERT INTO activation_links VALUES('$hash', '$startDate', '$endDate')") or die('Error: '.mysql_error());
+			$rs1 = mysqli_query($con, "INSERT INTO activation_links VALUES('$hash', '$startDate', '$endDate')") or die('Error: '.mysqli_error());
 			
 
 								
 			if(!$con || !$db){
-				echo "Error: ".mysql_error();
+				echo "Error: ".mysqli_error();
 			}
 			else{
-				if(mysql_num_rows($rs) < 1){
+				if(mysqli_num_rows($rs) < 1){
 					//EMAIL ISNT FOUND
 					echo $email." is not found.";
 					exit;
 			    }
 				else{
 					//EXTRACT DATABASE USER AND CREATE SESSION
-					while($row = mysql_fetch_array($rs)){
+					while($row = mysqli_fetch_array($rs)){
 						$dbuser = $row["user"];
 						
 					}
 					
-					$rs2 = mysql_query("INSERT INTO password_reset(user, hash) VALUES('$dbuser', '$hash' )") or die('Error: '.mysql_error());
+					$rs2 = mysqli_query($con, "INSERT INTO password_reset(user, hash) VALUES('$dbuser', '$hash' )") or die('Error: '.mysqli_error());
 					
 					
 					$subject = "HEDU IMS | Password Reset Confirmation";

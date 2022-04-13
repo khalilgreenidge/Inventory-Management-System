@@ -123,17 +123,17 @@ Created: 30/04/2015
 					$num = 0; $number = 0;
 					$highest = 0;
 					
-					$con = mysql_connect("localhost", "root", "");
+					$con = mysqli_connect("localhost", "root", "");
 							
-					$db = mysql_select_db("heduis");
+					$db = mysqli_select_db($con, "heduis");
 									
-					$rs = mysql_query("SELECT * FROM loan");
+					$rs = mysqli_query($con, "SELECT * FROM loan");
 									
 					if(!$con || !$db || !$rs ){
-						die('Error: '.mysql_error());
+						die('Error: '.mysqli_error());
 					}
 					else{
-						while($row = mysql_fetch_array($rs)){
+						while($row = mysqli_fetch_array($rs)){
 							$num = $row['ticket_id'];
 							
 							if($num > $highest ){
@@ -144,7 +144,7 @@ Created: 30/04/2015
 						echo $number;	
 					}
 						
-					mysql_close();
+					mysqli_close();
 				
 				?>" readonly /> <br/><br/>
 				Serial#: <input name="id" id="id" type="text" onkeyup="upperCase()" required/> <br/><br/>
@@ -205,30 +205,30 @@ Created: 30/04/2015
 					}
 					
 					
-					$con = mysql_connect("localhost", "root", "");
+					$con = mysqli_connect("localhost", "root", "");
 	
-					$db = mysql_select_db("heduis");
+					$db = mysqli_select_db($con, "heduis");
 					
-					$rs = mysql_query("SELECT * FROM stock WHERE id=\"$id\" ");
+					$rs = mysqli_query($con, "SELECT * FROM stock WHERE id=\"$id\" ");
 								
 					if(!$con || !$db || !$rs ){
-						die('Error: '.mysql_error());
+						die('Error: '.mysqli_error());
 					}
 					else{
-						while($row = mysql_fetch_array($rs)){
+						while($row = mysqli_fetch_array($rs)){
 							$dbB = $row['loaned'];
 							$item = $row["type"];
 						}
 						
 												
 						//IF ITEM IS BURROWED, PRINT ALREADY BURROWED. ELSE --> NEW ITEM ADDED!
-						if($dbB == "yes" ||(mysql_num_rows($rs) < 1)){
+						if($dbB == "yes" ||(mysqli_num_rows($rs) < 1)){
 							//ERROR
 							echo "<div id=\"ani\" class='error'><img src=\"dist/img/x.png\"/> Item already Loaned/ doesn't exist! </div>";
 						}
 						else{
 							//SUCCESS
-							$rs3 = mysql_query("INSERT INTO loan VALUES($ticket, \"$id\", \"$name\", \"$email\",\"no\", \"$startDate\", \"$endDate\", \"$duration\", \"$reason\", \"pending\")") or die('Error: '.mysql_error());
+							$rs3 = mysqli_query("INSERT INTO loan VALUES($ticket, \"$id\", \"$name\", \"$email\",\"no\", \"$startDate\", \"$endDate\", \"$duration\", \"$reason\", \"pending\")") or die('Error: '.mysqli_error());
 										
 							//SEND AN EMAIL TO ADMIN FOR ACCEPTANCE
 							$subject = "HEDU IMS | Ticket Request";
@@ -357,7 +357,7 @@ Created: 30/04/2015
 							}	
 					}
 					
-					mysql_close($con);
+					mysqli_close($con);
 					$location = "remainder.php";
 					
 					echo '<META HTTP-EQUIV="Refresh" Content="7; URL='.$location.'">';

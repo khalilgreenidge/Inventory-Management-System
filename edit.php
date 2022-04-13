@@ -123,14 +123,14 @@ Created: 37/04/2015
 				
 				
 					
-				$con = mysql_connect("localhost", "root", "");
+				$con = mysqli_connect("localhost", "root", "");
 							
-				$db = mysql_select_db("heduis");
+				$db = mysqli_select_db($con, "heduis");
 							
-				$rs = mysql_query("SELECT * FROM stock ORDER BY type");
+				$rs = mysqli_query($con, "SELECT * FROM stock ORDER BY type");
 									
 				if(!$con || !$db || !$rs ){
-					die('Error: '.mysql_error());
+					die('Error: '.mysqli_error());
 				}
 				else{
 					echo "
@@ -145,7 +145,7 @@ Created: 37/04/2015
 							</tr>
 						";	
 						
-					while($row = mysql_fetch_array($rs)){
+					while($row = mysqli_fetch_array($rs)){
 						echo "<tr>";
 							
 						echo "<td>" . $row['id'] . "</td>";
@@ -159,7 +159,7 @@ Created: 37/04/2015
 					echo "</table>";
 					
 				}
-				mysql_close($con);
+				mysqli_close($con);
 			?>
 			<hr/>
 			<h3>Choose An Item to Edit</h3><br/>
@@ -167,23 +167,23 @@ Created: 37/04/2015
 				Serial #: <select name ="id" required>
 										<option value="">Choose..</option>
 					<?php	
-						$con = mysql_connect("localhost", "root", "");
+						$con = mysqli_connect("localhost", "root", "");
 							
-						$db = mysql_select_db("heduis");
+						$db = mysqli_select_db($con, "heduis");
 									
-						$rs = mysql_query("SELECT id FROM stock ORDER BY id");
+						$rs = mysqli_query($con, "SELECT id FROM stock ORDER BY id");
 											
 						if(!$con || !$db || !$rs ){
-							die('Error: '.mysql_error());
+							die('Error: '.mysqli_error());
 						}
 						else{
 														
-							while($row = mysql_fetch_array($rs)){
+							while($row = mysqli_fetch_array($rs)){
 								echo "<option value = ".$row["id"].">".$row["id"]."</option>";
 							}
 							
 						}
-						mysql_close($con);
+						mysqli_close($con);
 					?>
 					</select><br/><br/>
 				Field: <select name="field" required>
@@ -209,14 +209,14 @@ Created: 37/04/2015
 							$field = $_POST["field"];
 							$value = ucwords($_POST["value"]);
 							
-							$con = mysql_connect("localhost", "root", "");
+							$con = mysqli_connect("localhost", "root", "");
 							
-							$db = mysql_select_db("heduis");
+							$db = mysqli_select_db($con, "heduis");
 										
-							$rs = mysql_query("UPDATE stock SET $field=\"$value\" WHERE id=\"$id\" ");
+							$rs = mysqli_query("UPDATE stock SET $field=\"$value\" WHERE id=\"$id\" ");
 								
 							if(!$con || !$db || !$rs ){
-								die('Error: '.mysql_error());
+								die('Error: '.mysqli_error());
 							}
 							else{
 								//ADD TO LINKS FILE FOR LIVESEARCH

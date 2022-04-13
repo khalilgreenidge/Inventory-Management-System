@@ -107,17 +107,17 @@
 					$id = $_POST["id"];
 										
 					
-					$con = mysql_connect("localhost", "root", "");
+					$con = mysqli_connect("localhost", "root", "");
 	
-					$db = mysql_select_db("heduis");
+					$db = mysqli_select_db($con, "heduis");
 					
-					$rs = mysql_query("SELECT * FROM stock WHERE id='$id'");
+					$rs = mysqli_query($con, "SELECT * FROM stock WHERE id='$id'");
 								
 					if(!$con || !$db || !$rs ){
-						die('Error: '.mysql_error());
+						die('Error: '.mysqli_error());
 					}
 					else{
-						while($row = mysql_fetch_array($rs)){
+						while($row = mysqli_fetch_array($rs)){
 							$dbB = $row['loaned'];
 						}
 						
@@ -129,12 +129,12 @@
 						}
 						else{
 							//SUCCESS
-							$rs2 = mysql_query("DELETE FROM stock WHERE id='$id'") or die('Error: '.mysql_error());
+							$rs2 = mysqli_query("DELETE FROM stock WHERE id='$id'") or die('Error: '.mysqli_error());
 							
 							echo "<div id=\"ani\" class='success'>Success! <img src=\"dist/img/tick.png\"/></div>";
 						}	
 					}
-					mysql_close($con);
+					mysqli_close($con);
 					$location = "index.php";
 					
 					echo '<META HTTP-EQUIV="Refresh" Content="7; URL='.$location.'">';

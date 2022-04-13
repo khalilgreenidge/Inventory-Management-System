@@ -13,33 +13,33 @@ Created: 30/04/2015
 	$hash = "";
 	$endDate = "";
 	
-	$con = mysql_connect("localhost", "root", "");
-	$db = mysql_select_db("heduis");
-	$rs = mysql_query("SELECT * FROM activation_links");
+	$con = mysqli_connect("localhost", "root", "");
+	$db = mysqli_select_db($con, "heduis");
+	$rs = mysqli_query($con, "SELECT * FROM activation_links");
 	
 	$start = $expire = 0;
 	
 	$today = strtotime("now");
 	
 	if(!$con || !$db || !$rs){
-		die('Error: '.mysql_error());
+		die('Error: '.mysqli_error());
 	}
 	else{
 		
-		while($row = mysql_fetch_array($rs)){
+		while($row = mysqli_fetch_array($rs)){
 			
 			$expire = strtotime($row["endDate"]);
 			
 			if($today > $expire){
 				$endDate = date("Y-m-d", $expire);
-				$rs1 = mysql_query("DELETE FROM activation_links WHERE endDate=\"$endDate\" ") or die('Error: '.mysql_error());
+				$rs1 = mysqli_query($con, "DELETE FROM activation_links WHERE endDate=\"$endDate\" ") or die('Error: '.mysqli_error());
 			}
 			
 		}
 		
 	}
 	
-	mysql_close($con);
+	mysqli_close($con);
 	
 ?> 
  <!DOCTYPE html>
@@ -147,20 +147,20 @@ Created: 30/04/2015
 		<section class="content" style="min-height: 800px">
 			
 			<?php
-			$con = mysql_connect("localhost", "root", "");
-			$db = mysql_select_db("heduis");
+			$con = mysqli_connect("localhost", "root", "");
+			$db = mysqli_select_db($con, "heduis");
 			$num = 0;
 			$a = 1;
 			$j = 0;
 			$br = "";
 			
-			$rs1 = mysql_query("SELECT * FROM new_stationery GROUP BY type ");
-			$rs2 = mysql_query("SELECT * FROM new_equipment GROUP BY type");
-			$rs3 = mysql_query("SELECT * FROM new_office_equipment GROUP BY type");
+			$rs1 = mysqli_query($con, "SELECT * FROM new_stationery GROUP BY type ");
+			$rs2 = mysqli_query($con, "SELECT * FROM new_equipment GROUP BY type");
+			$rs3 = mysqli_query($con, "SELECT * FROM new_office_equipment GROUP BY type");
 			$type = "";			
 						
 			if(!$con || !$db || !$rs1|| !$rs2 ||!$rs3){
-				die('Error: '.mysql_error());
+				die('Error: '.mysqli_error());
 			}
 			else{		
 			
@@ -173,13 +173,13 @@ Created: 30/04/2015
 				
 				echo '<h3>Stationery</h3>';
 				
-				while($row = mysql_fetch_array($rs1)){
+				while($row = mysqli_fetch_array($rs1)){
 					if($i > 'd'){
 						$i = 'a';
 					}
 					$type = $row["type"];	
-					$rs = mysql_query("SELECT * FROM stock WHERE type='$type'");
-					$num = mysql_num_rows($rs);
+					$rs = mysqli_query($con, "SELECT * FROM stock WHERE type='$type'");
+					$num = mysqli_num_rows($rs);
 					
 					echo '
 					<div id="col" class="'.$i.'" onclick="window.location.href=\'search.php?key='.$type.'\'" ">
@@ -203,14 +203,14 @@ Created: 30/04/2015
 				echo '<br/>';
 				echo '<h3>Computer Equipment</h3>';
 				
-				while($row = mysql_fetch_array($rs2)){
+				while($row = mysqli_fetch_array($rs2)){
 					if($i > 'd'){
 						$i = 'a';
 					}
 								
 					$type = $row["type"];	
-					$rs = mysql_query("SELECT * FROM stock WHERE type='$type'");
-					$num = mysql_num_rows($rs);
+					$rs = mysqli_query($con, "SELECT * FROM stock WHERE type='$type'");
+					$num = mysqli_num_rows($rs);
 					
 					echo '
 					<div id="col" class="'.$i.'" onclick="window.location.href=\'search.php?key='.$type.'\'" ">
@@ -236,14 +236,14 @@ Created: 30/04/2015
 				echo '<br/>';
 				echo '<h3>Office Equipment</h3>';
 				
-				while($row = mysql_fetch_array($rs3)){
+				while($row = mysqli_fetch_array($rs3)){
 					
 					if($i > 'd'){
 						$i = 'a';
 					}					
 					$type = $row["type"];	
-					$rs = mysql_query("SELECT * FROM stock WHERE type='$type'");
-					$num = mysql_num_rows($rs);
+					$rs = mysqli_query($con, "SELECT * FROM stock WHERE type='$type'");
+					$num = mysqli_num_rows($rs);
 					
 					echo '
 					<div id="col" class="'.$i.'" onclick="window.location.href=\'search.php?key='.$type.'\'" ">
@@ -277,11 +277,11 @@ Created: 30/04/2015
 					echo '<br/>';
 					echo '<h3>Computer Equipment</h3>';
 					
-					$rs = mysql_query("SELECT * FROM stock WHERE type='Laptop'") or die("Error: ".mysql_error());
-					$rs1 = mysql_query("SELECT * FROM stock WHERE type='Desktop'") or die("Error: ".mysql_error());
-					$rs2 = mysql_query("SELECT * FROM stock WHERE type='Tablet'") or die("Error: ".mysql_error());
+					$rs = mysqli_query($con, "SELECT * FROM stock WHERE type='Laptop'") or die("Error: ".mysqli_error());
+					$rs1 = mysqli_query($con, "SELECT * FROM stock WHERE type='Desktop'") or die("Error: ".mysqli_error());
+					$rs2 = mysqli_query($con, "SELECT * FROM stock WHERE type='Tablet'") or die("Error: ".mysqli_error());
 					
-					$row = mysql_fetch_array($rs);
+					$row = mysqli_fetch_array($rs);
 						if($i > 'd'){
 							$i = 'a';
 						}
@@ -289,7 +289,7 @@ Created: 30/04/2015
 						$type = $row["type"];	
 						
 					
-						$num = mysql_num_rows($rs);
+						$num = mysqli_num_rows($rs);
 						
 						echo '
 						<div id="col" class="'.$i.'" onclick="window.location.href=\'search.php?key='.$type.'\'" ">
@@ -299,7 +299,7 @@ Created: 30/04/2015
 					$i++;
 						
 					
-					$row = mysql_fetch_array($rs1);
+					$row = mysqli_fetch_array($rs1);
 					if($i > 'd'){
 						$i = 'a';
 					}
@@ -307,7 +307,7 @@ Created: 30/04/2015
 					$type = $row["type"];	
 					
 				
-					$num = mysql_num_rows($rs1);
+					$num = mysqli_num_rows($rs1);
 					
 					echo '
 					<div id="col" class="'.$i.'" onclick="window.location.href=\'search.php?key='.$type.'\'" ">
@@ -317,7 +317,7 @@ Created: 30/04/2015
 					$i++;
 					
 					
-					$row = mysql_fetch_array($rs2);
+					$row = mysqli_fetch_array($rs2);
 					if($i > 'd'){
 						$i = 'a';
 					}
@@ -325,7 +325,7 @@ Created: 30/04/2015
 					$type = $row["type"];	
 					
 				
-					$num = mysql_num_rows($rs2);
+					$num = mysqli_num_rows($rs2);
 					
 					echo '
 					<div id="col" class="'.$i.'" onclick="window.location.href=\'search.php?key='.$type.'\'" ">

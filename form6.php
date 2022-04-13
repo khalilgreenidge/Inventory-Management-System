@@ -124,15 +124,15 @@ Created: 30/04/2015
 				
 				
 					
-				$con = mysql_connect("localhost", "root", "");
+				$con = mysqli_connect("localhost", "root", "");
 							
-				$db = mysql_select_db("heduis");
+				$db = mysqli_select_db($con, "heduis");
 							
-				$rs = mysql_query("SELECT * FROM stock ORDER BY type");
+				$rs = mysqli_query($con, "SELECT * FROM stock ORDER BY type");
 				
 				
 				if(!$con || !$db || !$rs ){
-					die('Error: '.mysql_error());
+					die('Error: '.mysqli_error());
 				}
 				else{
 					echo "
@@ -148,7 +148,7 @@ Created: 30/04/2015
 							</tr>
 						";	
 						
-					while($row = mysql_fetch_array($rs)){
+					while($row = mysqli_fetch_array($rs)){
 						echo "<tr>";
 							
 						echo "<td>" . $row['id'] . "</td>";
@@ -162,9 +162,9 @@ Created: 30/04/2015
 					}
 					echo "</table>";
 						
-					echo "There are <b>".mysql_num_rows($rs). "</b> assets at the Higher Education Development Unit";
+					echo "There are <b>".mysqli_num_rows($rs). "</b> assets at the Higher Education Development Unit";
 					
-					mysql_close($con);
+					mysqli_close($con);
 				}
 			?>
 			

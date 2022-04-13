@@ -2,205 +2,201 @@
 		<pages>
 			<link>
 				<title>7C323760R</title>
-				<url>http://localhost:8000/search.php?key=7C323760R</url>
+				<url>search.php?key=7C323760R</url>
 			</link>
 			<link>
 				<title>BLU1</title>
-				<url>http://localhost:8000/search.php?key=BLU1</url>
+				<url>search.php?key=BLU1</url>
 			</link>
 			<link>
 				<title>C1</title>
-				<url>http://localhost:8000/search.php?key=C1</url>
+				<url>search.php?key=C1</url>
 			</link>
 			<link>
 				<title>C3</title>
-				<url>http://localhost:8000/search.php?key=C3</url>
+				<url>search.php?key=C3</url>
 			</link>
 			<link>
 				<title>CA1</title>
-				<url>http://localhost:8000/search.php?key=CA1</url>
+				<url>search.php?key=CA1</url>
 			</link>
 			<link>
 				<title>CA2</title>
-				<url>http://localhost:8000/search.php?key=CA2</url>
+				<url>search.php?key=CA2</url>
 			</link>
 			<link>
 				<title>CA3</title>
-				<url>http://localhost:8000/search.php?key=CA3</url>
+				<url>search.php?key=CA3</url>
 			</link>
 			<link>
 				<title>CA4</title>
-				<url>http://localhost:8000/search.php?key=CA4</url>
+				<url>search.php?key=CA4</url>
 			</link>
 			<link>
 				<title>CA5</title>
-				<url>http://localhost:8000/search.php?key=CA5</url>
+				<url>search.php?key=CA5</url>
 			</link>
 			<link>
 				<title>CK2</title>
-				<url>http://localhost:8000/search.php?key=CK2</url>
+				<url>search.php?key=CK2</url>
 			</link>
 			<link>
 				<title>CK5</title>
-				<url>http://localhost:8000/search.php?key=CK5</url>
+				<url>search.php?key=CK5</url>
 			</link>
 			<link>
 				<title>CKI</title>
-				<url>http://localhost:8000/search.php?key=CKI</url>
+				<url>search.php?key=CKI</url>
 			</link>
 			<link>
 				<title>DA1</title>
-				<url>http://localhost:8000/search.php?key=DA1</url>
+				<url>search.php?key=DA1</url>
 			</link>
 			<link>
 				<title>DA2</title>
-				<url>http://localhost:8000/search.php?key=DA2</url>
+				<url>search.php?key=DA2</url>
 			</link>
 			<link>
 				<title>DA3</title>
-				<url>http://localhost:8000/search.php?key=DA3</url>
+				<url>search.php?key=DA3</url>
 			</link>
 			<link>
 				<title>desk1</title>
-				<url>http://localhost:8000/search.php?key=desk1</url>
+				<url>search.php?key=desk1</url>
 			</link>
 			<link>
 				<title>F1</title>
-				<url>http://localhost:8000/search.php?key=F1</url>
+				<url>search.php?key=F1</url>
 			</link>
 			<link>
 				<title>F3</title>
-				<url>http://localhost:8000/search.php?key=F3</url>
+				<url>search.php?key=F3</url>
 			</link>
 			<link>
 				<title>f4</title>
-				<url>http://localhost:8000/search.php?key=f4</url>
+				<url>search.php?key=f4</url>
 			</link>
 			<link>
 				<title>F6</title>
-				<url>http://localhost:8000/search.php?key=F6</url>
+				<url>search.php?key=F6</url>
 			</link>
 			<link>
 				<title>f7</title>
-				<url>http://localhost:8000/search.php?key=f7</url>
+				<url>search.php?key=f7</url>
 			</link>
 			<link>
 				<title>FA2</title>
-				<url>http://localhost:8000/search.php?key=FA2</url>
+				<url>search.php?key=FA2</url>
 			</link>
 			<link>
 				<title>FG2</title>
-				<url>http://localhost:8000/search.php?key=FG2</url>
+				<url>search.php?key=FG2</url>
 			</link>
 			<link>
 				<title>G71C000F5110</title>
-				<url>http://localhost:8000/search.php?key=G71C000F5110</url>
+				<url>search.php?key=G71C000F5110</url>
 			</link>
 			<link>
 				<title>IUJH</title>
-				<url>http://localhost:8000/search.php?key=IUJH</url>
+				<url>search.php?key=IUJH</url>
 			</link>
 			<link>
 				<title>PA1</title>
-				<url>http://localhost:8000/search.php?key=PA1</url>
+				<url>search.php?key=PA1</url>
 			</link>
 			<link>
 				<title>PA2</title>
-				<url>http://localhost:8000/search.php?key=PA2</url>
+				<url>search.php?key=PA2</url>
 			</link>
 			<link>
 				<title>PA3</title>
-				<url>http://localhost:8000/search.php?key=PA3</url>
+				<url>search.php?key=PA3</url>
 			</link>
 			<link>
 				<title>PA6</title>
-				<url>http://localhost:8000/search.php?key=PA6</url>
+				<url>search.php?key=PA6</url>
 			</link>
 			<link>
 				<title>PBG1</title>
-				<url>http://localhost:8000/search.php?key=PBG1</url>
+				<url>search.php?key=PBG1</url>
 			</link>
 			<link>
 				<title>PPT1</title>
-				<url>http://localhost:8000/search.php?key=PPT1</url>
+				<url>search.php?key=PPT1</url>
 			</link>
 			<link>
 				<title>PU9</title>
-				<url>http://localhost:8000/search.php?key=PU9</url>
+				<url>search.php?key=PU9</url>
 			</link>
 			<link>
 				<title>SA1</title>
-				<url>http://localhost:8000/search.php?key=SA1</url>
+				<url>search.php?key=SA1</url>
 			</link>
 			<link>
 				<title>SpPBBWDDZP5</title>
-				<url>http://localhost:8000/search.php?key=SpPBBWDDZP5</url>
+				<url>search.php?key=SpPBBWDDZP5</url>
 			</link>
 			<link>
 				<title>TA1</title>
-				<url>http://localhost:8000/search.php?key=TA1</url>
+				<url>search.php?key=TA1</url>
 			</link>
 			<link>
 				<title>WA1</title>
-				<url>http://localhost:8000/search.php?key=WA1</url>
+				<url>search.php?key=WA1</url>
 			</link>
 			<link>
 				<title>YGI1</title>
-				<url>http://localhost:8000/search.php?key=YGI1</url>
-			</link>
-			<link>
-				<title> Desk</title>
-				<url>http://localhost:8000/search.php?key= Desk</url>
+				<url>search.php?key=YGI1</url>
 			</link>
 			<link>
 				<title>Chair</title>
-				<url>http://localhost:8000/search.php?key=Chair</url>
+				<url>search.php?key=Chair</url>
 			</link>
 			<link>
 				<title>Desk</title>
-				<url>http://localhost:8000/search.php?key=Desk</url>
+				<url>search.php?key=Desk</url>
 			</link>
 			<link>
 				<title>Desktop</title>
-				<url>http://localhost:8000/search.php?key=Desktop</url>
+				<url>search.php?key=Desktop</url>
 			</link>
 			<link>
 				<title>Fax Machine</title>
-				<url>http://localhost:8000/search.php?key=Fax Machine</url>
+				<url>search.php?key=Fax Machine</url>
 			</link>
 			<link>
 				<title>Firewall</title>
-				<url>http://localhost:8000/search.php?key=Firewall</url>
+				<url>search.php?key=Firewall</url>
 			</link>
 			<link>
 				<title>Laptop</title>
-				<url>http://localhost:8000/search.php?key=Laptop</url>
+				<url>search.php?key=Laptop</url>
 			</link>
 			<link>
 				<title>Paper</title>
-				<url>http://localhost:8000/search.php?key=Paper</url>
+				<url>search.php?key=Paper</url>
 			</link>
 			<link>
 				<title>Pen</title>
-				<url>http://localhost:8000/search.php?key=Pen</url>
+				<url>search.php?key=Pen</url>
 			</link>
 			<link>
 				<title>Pencil</title>
-				<url>http://localhost:8000/search.php?key=Pencil</url>
+				<url>search.php?key=Pencil</url>
 			</link>
 			<link>
 				<title>Projector</title>
-				<url>http://localhost:8000/search.php?key=Projector</url>
+				<url>search.php?key=Projector</url>
 			</link>
 			<link>
 				<title>Switch</title>
-				<url>http://localhost:8000/search.php?key=Switch</url>
+				<url>search.php?key=Switch</url>
 			</link>
 			<link>
 				<title>Tablet</title>
-				<url>http://localhost:8000/search.php?key=Tablet</url>
+				<url>search.php?key=Tablet</url>
 			</link>
 			<link>
 				<title>Whiteout</title>
-				<url>http://localhost:8000/search.php?key=Whiteout</url>
+				<url>search.php?key=Whiteout</url>
 			</link></pages>

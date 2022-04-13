@@ -120,14 +120,14 @@ Created: 37/04/2015
 				//VARIABLES
 				$type = "";
 				
-				$con = mysql_connect("localhost", "root", "");
+				$con = mysqli_connect("localhost", "root", "");
 							
-				$db = mysql_select_db("heduis");
+				$db = mysqli_select_db($con, "heduis");
 							
-				$rs = mysql_query("SELECT * FROM loan WHERE Returned=\"no\" AND Status=\"accepted\"  ORDER BY ReturnDate ");
+				$rs = mysqli_query($con, "SELECT * FROM loan WHERE Returned=\"no\" AND Status=\"accepted\"  ORDER BY ReturnDate ");
 									
 				if(!$con || !$db || !$rs ){
-					die('Error: '.mysql_error());
+					die('Error: '.mysqli_error());
 				}
 				else{
 
@@ -147,11 +147,11 @@ Created: 37/04/2015
 							</tr>
 						";	
 					
-					if(mysql_num_rows($rs) < 1):
+					if(mysqli_num_rows($rs) < 1):
 						echo "<b>All items have been returned</b>";
 					endif;
 					
-					while($row = mysql_fetch_array($rs)){
+					while($row = mysqli_fetch_array($rs)){
 						echo "<tr>";
 							
 						echo "<td>" . $row['ticket_id'] . "</td>";
@@ -196,15 +196,15 @@ Created: 37/04/2015
 							$officer = $duration = "";
 							
 							//PRINT DROP DOWN LIST
-							$result1 = mysql_query("SELECT * FROM loan WHERE Returned=\"no\" ") or die(mysql_error());
+							$result1 = mysqli_query($con, "SELECT * FROM loan WHERE Returned=\"no\" ") or die(mysqli_error());
 							
-							while($row = mysql_fetch_array($result1)){
+							while($row = mysqli_fetch_array($result1)){
 								echo "<option value = ".$row["ticket_id"].">".$row["ticket_id"]."</option>";
 								$email = $row["Email"];
 								$duration = $row["Duration"];
 								$officer = $row["Officer"];
 							}
-							mysql_close($con);
+							mysqli_close($con);
 						?> </select><br/>
 					<br/>		
 				<input type="submit" style="width: 100px;"/> <input type="reset" style="width: 100px;"/>
@@ -223,34 +223,34 @@ Created: 37/04/2015
 					
 									
 					
-					$con = mysql_connect("localhost", "root", "");
+					$con = mysqli_connect("localhost", "root", "");
 	
-					$db = mysql_select_db("heduis");
+					$db = mysqli_select_db($con, "heduis");
 					
 					date_default_timezone_set("America/La_Paz");
 					$mkdate = getdate(date("U"));
 					$date = "$mkdate[year]"."-".date("m-d"); 
 					
-					$rs = mysql_query("SELECT * FROM loan WHERE ticket_id=\"$ticket\"");	
+					$rs = mysqli_query($con, "SELECT * FROM loan WHERE ticket_id=\"$ticket\"");	
 					
 								
 					if(!$con || !$db || !$rs){
-						die('Error: '.mysql_error());
+						die('Error: '.mysqli_error());
 					}
 					else{
-						while($row = mysql_fetch_array($rs)){
+						while($row = mysqli_fetch_array($rs)){
 							$id = $row["ID"];
 						}
 						
-						$rs2 = mysql_query("UPDATE stock SET loaned=\"no\" WHERE id=\"$id\" ") or die('Error: '.mysql_error());
-						$rs3 = mysql_query("UPDATE loan SET Returned=\"yes\" WHERE ticket_id=\"$ticket\" ") or die('Error: '.mysql_error());
+						$rs2 = mysqli_query("UPDATE stock SET loaned=\"no\" WHERE id=\"$id\" ") or die('Error: '.mysqli_error());
+						$rs3 = mysqli_query("UPDATE loan SET Returned=\"yes\" WHERE ticket_id=\"$ticket\" ") or die('Error: '.mysqli_error());
 						
 						echo "<div id=\"ani\" class='success'>Success! <img src=\"dist/img/tick.png\"/></div>";						
 						$location = 'return.php';
 						echo '<META HTTP-EQUIV="Refresh" Content="0; URL='.$location.'">';					
 					
 					}
-					mysql_close($con);
+					mysqli_close($con);
 															
 				}
 				

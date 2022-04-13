@@ -47,22 +47,22 @@ Created: 30/04/2015
 						endif;
 						
 						//ESTABLISH CONNECT
-						$con = mysql_connect("localhost", "root", "");
+						$con = mysqli_connect("localhost", "root", "");
 								
 						//CONNECT TO DB
-						$db = mysql_select_db("heduis");
+						$db = mysqli_select_db($con, "heduis");
 								
 						//MAKE QUERY 1
-						$rs1 = mysql_query("SELECT * FROM activation_links WHERE hash='$hash' ");// or die('Error :'.mysql_error());
-						$rs2 = mysql_query("SELECT * FROM registration WHERE hash='$hash' "); // or die('Error :'.mysql_error());
+						$rs1 = mysqli_query($con, "SELECT * FROM activation_links WHERE hash='$hash' ");// or die('Error :'.mysqli_error());
+						$rs2 = mysqli_query($con, "SELECT * FROM registration WHERE hash='$hash' "); // or die('Error :'.mysqli_error());
 											
 						if(!$con || !$db || !$rs1 || !$rs2){
-							echo "Error: ".mysql_error();
+							echo "Error: ".mysqli_error();
 						}
 						else{
 							//IF LINK IS ACTIVATED OR EXPIRED --> SHOW ERROR. ELSE --> DISPLAY PAGE AND ADD USER TO DATABASE
 							
-							while($row = mysql_fetch_array($rs1)){
+							while($row = mysqli_fetch_array($rs1)){
 								
 								$dbendDate = $row["endDate"];
 								
@@ -70,7 +70,7 @@ Created: 30/04/2015
 							
 							$dbendDate = strtotime($dbendDate);
 							
-							while($row = mysql_fetch_array($rs2)){
+							while($row = mysqli_fetch_array($rs2)){
 								//ASSIGN VARIABLES TO ADD USER
 								$dbuser = $row["user"];
 								$dbpwd = $row["password"];
@@ -79,8 +79,8 @@ Created: 30/04/2015
 								$dbemail = $row["email"];
 								
 							}
-							if($today >= $dbendDate || mysql_num_rows($rs1) < 1 ){
-								$rs = mysql_query("DELETE FROM activation_links WHERE hash='$hash' ") or die('Error: '.mysql_error());
+							if($today >= $dbendDate || mysqli_num_rows($rs1) < 1 ){
+								$rs = mysqli_query("DELETE FROM activation_links WHERE hash='$hash' ") or die('Error: '.mysqli_error());
 							
 								echo "<h2>Link Expired!</h2>";
 								echo "<br/>";
@@ -97,13 +97,13 @@ Created: 30/04/2015
 								echo "The user is now allowed to sign in";
 								echo '';
 								echo "<br/><br/>";
-								$rs = mysql_query("INSERT INTO users VALUES('$dbuser', '$dbpwd', '$dbgender', '$dbname', '$dbemail' )") or die('Error: '.mysql_error());
-								$rs = mysql_query("DELETE FROM activation_links WHERE hash='$hash' ") or die('Error: '.mysql_error());
+								$rs = mysqli_query("INSERT INTO users VALUES('$dbuser', '$dbpwd', '$dbgender', '$dbname', '$dbemail' )") or die('Error: '.mysqli_error());
+								$rs = mysqli_query("DELETE FROM activation_links WHERE hash='$hash' ") or die('Error: '.mysqli_error());
 								
 							}
 							
 						}
-						mysql_close($con);
+						mysqli_close($con);
 					
 					?>
 					

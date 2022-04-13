@@ -13,6 +13,7 @@ A video demonstration of how everything looks can be viewed [here](https://drive
 - Go to `/login`, using username: `techadmin` and password: `Passw0rd` 
 - You will also need to config your `php.ini` file to allow mailing functions to work. You can verify that mailserver at "localhost", "SMTP" and "smtp_port" is set to 25 in the `php.ini`. Here's a [guide](https://www.quackit.com/php/tutorial/php_mail_configuration.cfm).
 
+
 Features:
 ----------------
 - Dashboard
@@ -33,7 +34,7 @@ Technologies:
 - CSS
 - PHP
 - Apache XAMPP
-- MySQL
+- mysqli
 
 Browser Support:
 ----------------

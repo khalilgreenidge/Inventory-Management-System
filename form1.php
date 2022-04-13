@@ -121,25 +121,25 @@ Created: 37/04/2015
 				Type: <select name="type" required>
 					<option value="">Choose..</option>
 					<?php
-						$con = mysql_connect("localhost", "root", "");
+						$con = mysqli_connect("localhost", "root", "");
 						
-						$db = mysql_select_db("heduis");
+						$db = mysqli_select_db($con, "heduis");
 						
-						$rs = mysql_query("SELECT * FROM new_stationery");
+						$rs = mysqli_query($con, "SELECT * FROM new_stationery");
 						
 						if(!$con || !$db || !$rs){
-							die('Error: '.mysql_error());
+							die('Error: '.mysqli_error());
 						}
 						else{
 							//PRINT MESSAGE
-							while($row = mysql_fetch_array($rs)){
+							while($row = mysqli_fetch_array($rs)){
 								echo "
 								<option value=' ".$row['type']."'>".$row['type']."</option>
 							";
 							}
 						}
 						
-						mysql_close($con);
+						mysqli_close($con);
 					?>
 				</select> <br/> 
 				<a href="form1-1.php"> &nbsp;Type not found? Click here <a/>
@@ -185,30 +185,30 @@ Created: 37/04/2015
 					$type = test_input($_POST["type"]);
 					$comment = $_POST["comment"];
 					
-					$con = mysql_connect("localhost", "root", "");
+					$con = mysqli_connect("localhost", "root", "");
 	
-					$db = mysql_select_db("heduis");
+					$db = mysqli_select_db($con, "heduis");
 					
-					$rs = mysql_query("SELECT * FROM stock WHERE id=\"$id\" ");
+					$rs = mysqli_query($con, "SELECT * FROM stock WHERE id=\"$id\" ");
 					
 										
 					if(!$con || !$db || !$rs ){
-						die('Error: '.mysql_error());
+						die('Error: '.mysqli_error());
 					}
 					else{
 						
 						//IF ITEM IS FOUND, PRINT ALREADY ADDED. ELSE --> NEW ITEM ADDED!
-						if(mysql_num_rows($rs) > 0){
+						if(mysqli_num_rows($rs) > 0){
 							//ERROR
 							echo "<div id=\"ani\" class='error'><img src=\"dist/img/x.png\"/> Item already added! </div>";
 						}
 						else{
 							//SUCCESS
 							if(empty($comment)){
-								$rs2 = mysql_query("INSERT INTO stock(id, brand, model, type, loaned) VALUES(\"$id\", \"$name\", \"$brand\", \"$model\", \"$type\", \"no\")") or die('Error: '.mysql_error());
+								$rs2 = mysqli_query("INSERT INTO stock(id, brand, model, type, loaned) VALUES(\"$id\", \"$name\", \"$brand\", \"$model\", \"$type\", \"no\")") or die('Error: '.mysqli_error());
 							}
 							else{
-								$rs2 = mysql_query("INSERT INTO stock(id, brand, model, type, loaned, comment) VALUES(\"$id\",\"$brand\", \"$model\", \"$type\", \"no\", \"$comment\")") or die('Error: '.mysql_error());
+								$rs2 = mysqli_query("INSERT INTO stock(id, brand, model, type, loaned, comment) VALUES(\"$id\",\"$brand\", \"$model\", \"$type\", \"no\", \"$comment\")") or die('Error: '.mysqli_error());
 							}
 							echo "<div id=\"ani\" class='success'>New item Added! <img src=\"dist/img/tick.png\"/></div>";
 						
@@ -220,7 +220,7 @@ Created: 37/04/2015
 						
 						
 					}
-					mysql_close($con);
+					mysqli_close($con);
 				}
 				
 				//TEST FUNCTION

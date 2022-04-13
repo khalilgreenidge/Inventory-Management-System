@@ -31,18 +31,18 @@
 			
 				
 			//ESTABLISH CONNECT
-			$con = mysql_connect("localhost", "root", "");
+			$con = mysqli_connect("localhost", "root", "");
 					
 			//CONNECT TO DB
-			$db = mysql_select_db("heduis");
+			$db = mysqli_select_db($con, "heduis");
 					
 
 			//MAKE QUERY 3
-			$rs1 = mysql_query("UPDATE users SET password='$newpwd' WHERE user='$dbuser' ");
+			$rs1 = mysqli_query("UPDATE users SET password='$newpwd' WHERE user='$dbuser' ");
 						
 			//REMOVE LINKS
-			$rs2 = mysql_query("DELETE FROM activation_links WHERE hash='$hash' ");
-			$rs3 = mysql_query("DELETE FROM password_reset WHERE hash='$hash' ");
+			$rs2 = mysqli_query("DELETE FROM activation_links WHERE hash='$hash' ");
+			$rs3 = mysqli_query("DELETE FROM password_reset WHERE hash='$hash' ");
 			
 			if(!$con || !$db || !$rs1 || !$rs2 || !$rs3){
 				
@@ -51,7 +51,7 @@
 				<br/>		  
 				<div class="body bg-gray">
 
-						echo "Error: ".mysql_error();	
+						echo "Error: ".mysqli_error();	
 						
 				</div>
 				<br/>		  
@@ -76,7 +76,7 @@
 			}
 			
 			
-			mysql_close($con);
+			mysqli_close($con);
 	
 		}
 	

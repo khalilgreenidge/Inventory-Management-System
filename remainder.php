@@ -130,19 +130,19 @@
 				
 				//VARIABLES
 									
-					$con = mysql_connect("localhost", "root", "");
+					$con = mysqli_connect("localhost", "root", "");
 							
-					$db = mysql_select_db("heduis");
+					$db = mysqli_select_db($con, "heduis");
 							
 					if($_SESSION["user"] == "admin"){		
-						$rs = mysql_query("SELECT * FROM stock WHERE loaned=\"no\" ORDER BY type ");
+						$rs = mysqli_query($con, "SELECT * FROM stock WHERE loaned=\"no\" ORDER BY type ");
 					}
 					else{
-						$rs = mysql_query("SELECT * FROM stock WHERE loaned=\"no\" AND type=\"Tablet\" OR type=\"Laptop\" OR type=\"Desktop\" ORDER BY type ");
+						$rs = mysqli_query($con, "SELECT * FROM stock WHERE loaned=\"no\" AND type=\"Tablet\" OR type=\"Laptop\" OR type=\"Desktop\" ORDER BY type ");
 					}
 										
 					if(!$con || !$db || !$rs ){
-						die('Error: '.mysql_error());
+						die('Error: '.mysqli_error());
 					}
 					else{
 						echo "<br/>
@@ -157,7 +157,7 @@
 							</tr>
 						";	
 						
-						while($row = mysql_fetch_array($rs)){
+						while($row = mysqli_fetch_array($rs)){
 							echo "<tr>";
 							
 							echo "<td>" . $row['id'] . "</td>";
@@ -172,7 +172,7 @@
 						echo "</table>";
 						
 					}
-					mysql_close($con);
+					mysqli_close($con);
 				
 			?>
 			 
