@@ -1,8 +1,12 @@
 Inventory Management System
 ------------------------
-This project contains my source files used to create an inventory management system while working as an IT Intern at the Higher Education Development Unit.
+This project contains my source files used to create an inventory management system while working as at the Higher Education Development Unit. The project was built to solve the problem of tracking the company's inventory in an efficient manner. Previously, their inventory and assets were tracked manually using pen and paper. With this project, they were then able to add, view, edit, tabulate and calculate all of their assets by category, total and item. In addition, users can request to borrow items (loaning) via a ticket request, and administrator could track, and approve loaned items with reminders and deadline to return the item.
 
-Featured:
+## Video Demonstration
+A video demonstration of how everything looks can be viewed [here](https://drive.google.com/file/d/0B_E7tBZ1zioFV2VuWHRwZVBTZWs/view?usp=sharing&resourcekey=0-cm-MwExQgAntoNjIh6252Q).
+
+
+Features:
 ----------------
 - Dashboard
 - Login
@@ -15,27 +19,14 @@ Featured:
 - 404 Error
 - 500 Error
 
-Featured Plugins:
+Technologies:
 -----------------
-- Boostrap Slider
-- Ion slider
-- Bootstrap WYSIHTML5
-- CKEditor
-- Bootstrap Colorpicker
-- Bootstrap Date range Picker
-- Bootstrap Time Picker
-- Data Tables
-- Flot
-- Morris.js
-- Sparkilne
-- Full Calendar
-- iCheck
-- jQuery input mask
-- jQuery Knob
-- jVector Map
-- Slim Scroll
-- Pace
-- [Bootstrap Social Buttons](http://lipis.github.io/bootstrap-social/ "Bootstrap Social")
+- Boostrap 
+- HTML
+- CSS
+- PHP
+- Apache XAMPP
+- MySQL
 
 Browser Support:
 ----------------
