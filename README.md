@@ -1,6 +1,6 @@
 Inventory Management System
 ------------------------
-This project contains my source files used to create an inventory management system while working as at the Higher Education Development Unit. The project was built to solve the problem of tracking the company's inventory in an efficient manner. Previously, their inventory and assets were tracked manually using pen and paper. With this project, they were then able to add, view, edit, tabulate and calculate all of their assets by category, total and item. In addition, users can request to borrow items (loaning) via a ticket request, and administrator could track, and approve loaned items with reminders and deadline to return the item. Below shows an image of the dashboard being presented upon login:
+This project contains my source files used to create an inventory management system while working at the Higher Education Development Unit. The project was built to solve the problem of tracking the company's inventory in an efficient manner. Previously, their inventory and assets were tracked manually using pen and paper. With this project, they were then able to add, view, edit, tabulate and calculate all of their assets by category, total and item. In addition, users can request to borrow items (loaning) via a ticket request, and administrator could track, and approve loaned items with reminders and deadline to return the item. Below shows an image of the dashboard being presented upon login:
 
 ![Dashboard](/dist/img/dashboard-screenshot.png)
 
